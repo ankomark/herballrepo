@@ -1,4 +1,4 @@
-General Styles
+/* General Styles */
 body {
   font-family: Arial, sans-serif;
   margin: 0;
@@ -87,7 +87,7 @@ button:hover {
 /* Medicines Grid */
 .medicine-list {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr); /* Updated to 2 columns */
   gap: 20px;
   padding: 20px;
   margin: 20px;
@@ -121,12 +121,8 @@ button:hover {
   bottom: 0;
   width: 100%;
 }
-/* src/App.css */
 
-body {
-  font-family: Arial, sans-serif;
-}
-
+/* Additional Styles for App */
 .App {
   text-align: center;
   margin-top: 50px;
@@ -190,6 +186,7 @@ input {
 .form-btn:hover {
   background-color: #0056b3;
 }
+
 .auth-form {
   border: 1px solid #ddd;
   padding: 20px;
@@ -198,6 +195,7 @@ input {
   background-color: #f9f9f9;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
+
 /* Create Button */
 .create-btn {
   background-color: #28a745;
@@ -269,6 +267,7 @@ input {
 .footer nav a:hover {
   text-decoration: underline;
 }
+
 .contact-page {
   background-color: #e7f3f7;
   padding: 20px;
@@ -281,6 +280,7 @@ input {
 .contact-page h2 {
   color: #2196F3;
 }
+
 .about-page {
   background-color: #e7f3e7;
   padding: 20px;
@@ -293,6 +293,7 @@ input {
 .about-page h2 {
   color: #4CAF50;
 }
+
 footer {
   background-color: #333;
   color: white;
@@ -300,6 +301,7 @@ footer {
   padding: 15px 0;
   margin-top: 20px;
 }
+
 /* Item List Styles */
 .item-list {
   padding: 20px;
@@ -328,4 +330,20 @@ footer {
   border-radius: 5px;
   background-color: #fff; /* White background */
   cursor: pointer; /* Pointer on hover */
+}
+
+.search-sort {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px 0;
+}
+
+.search-sort input {
+  flex: 1;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.search-sort select {
+  padding: 8px;
 }
