@@ -25,7 +25,7 @@ platformdirs
 pluggy
 pytest
 SQLAlchemy
-typing_extension
+typing_extensions
 virtualenv
 Werkzeug
 psycopg2
