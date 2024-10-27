@@ -166,6 +166,7 @@ function App() {
                     <h2>{editMedicine ? 'Edit Medicine' : 'Create Medicine'}</h2>
                     <input
                       type="text"
+                      name="name"
                       placeholder="Name"
                       value={newMedicine.name}
                       onChange={(e) => setNewMedicine({ ...newMedicine, name: e.target.value })}
@@ -173,6 +174,7 @@ function App() {
                     />
                     <input
                       type="text"
+                      name ="image_url"
                       placeholder="Image URL"
                       value={newMedicine.image_url}
                       onChange={(e) => setNewMedicine({ ...newMedicine, image_url: e.target.value })}
@@ -180,12 +182,14 @@ function App() {
                     />
                     <textarea
                       placeholder="Description"
+                      name="description"
                       value={newMedicine.description}
                       onChange={(e) => setNewMedicine({ ...newMedicine, description: e.target.value })}
                       required
                     ></textarea>
                     <input
                       type="text"
+                      name = "prescription"
                       placeholder="Prescription"
                       value={newMedicine.prescription}
                       onChange={(e) => setNewMedicine({ ...newMedicine, prescription: e.target.value })}
@@ -217,13 +221,16 @@ function App() {
                     <h2>Sign Up</h2>
                     <input
                       type="text"
+                      name="username"
                       placeholder="Username"
                       value={username}
+                      
                       onChange={(e) => setUsername(e.target.value)}
                       required
                     />
                     <input
                       type="password"
+                      name="password"
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
@@ -238,6 +245,8 @@ function App() {
                     <h2>Login</h2>
                     <input
                       type="text"
+                      name="username"
+                      
                       placeholder="Username"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
@@ -245,6 +254,7 @@ function App() {
                     />
                     <input
                       type="password"
+                      name = "password"
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
