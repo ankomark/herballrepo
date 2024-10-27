@@ -166,7 +166,7 @@ app = Flask(__name__)
 CORS(app, supports_credentials=True)  # Enable CORS with credentials support
 
 # Database configuration
-app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://app_db_y6fy_user:xYI98iDydxtIX7zv4y3PGPDj4hHxGLGz@dpg-csdv9hbv2p9s73b25bj0-a.oregon-postgres.render.com/herbal_app_db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mark_qv8b_user:erXCZgxHwGZo7cLAHQvmZ0nFTFV6vlVf@dpg-csf5s6e8ii6s739c6hp0-a.oregon-postgres.render.com/mark_qv8b'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'your_secret_key_here'
 app.config['SESSION_COOKIE_HTTPONLY'] = True  # Ensures cookies are only sent via HTTP
