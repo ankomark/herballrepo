@@ -64,7 +64,7 @@ function App() {
 
   const fetchMedicines = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/medicines');
+      const response = await axios.get('/medicines');
       setMedicines(response.data);
     } catch (error) {
       console.log(error);
@@ -74,7 +74,7 @@ function App() {
   const signup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/signup', { username, password });
+      await axios.post('/signup', { username, password });
       setMessage('User created successfully');
       setShowSignUp(false);
     } catch (error) {
@@ -85,7 +85,7 @@ function App() {
   const login = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:5000/login', { username, password });
+      await axios.post('/login', { username, password });
       setMessage('Logged in successfully');
       setIsLoggedIn(true);
       setShowLogin(false);
@@ -97,11 +97,11 @@ function App() {
   const addMedicine = async (e) => {
     e.preventDefault();
     if (editMedicine) {
-      await axios.put(`http://localhost:5000/medicines/${editMedicine.id}`, newMedicine);
+      await axios.put(`/medicines/${editMedicine.id}`, newMedicine);
       setMessage('Medicine updated successfully!');
       setEditMedicine(null);
     } else {
-      await axios.post('http://localhost:5000/medicines', newMedicine);
+      await axios.post('/medicines', newMedicine);
       setMessage('Medicine added successfully!');
     }
     fetchMedicines();
@@ -110,7 +110,7 @@ function App() {
   };
 
   const deleteMedicine = async (id) => {
-    await axios.delete(`http://localhost:5000/medicines/${id}`);
+    await axios.delete(`/medicines/${id}`);
     setMessage('Medicine deleted successfully!');
     fetchMedicines();
   };
