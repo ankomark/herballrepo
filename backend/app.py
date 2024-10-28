@@ -234,7 +234,7 @@ def logout():
     return jsonify({'message': 'Logged out successfully!'}), 200
 
 # CRUD for Medicines
-@app.route('/medicines', methods=['GET'])
+@app.route('/mediciness', methods=['GET'])
 def get_medicines():
     medicines = Medicine.query.all()
     medicines_list = [{'id': m.id, 'name': m.name, 'image_url': m.image_url, 'description': m.description, 'prescription': m.prescription} for m in medicines]
