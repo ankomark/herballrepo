@@ -87,23 +87,41 @@ button:hover {
 /* Medicines Grid */
 .medicine-list {
   display: grid;
-  grid-template-columns: repeat(2, 1fr); /* Updated to 2 columns */
+  grid-template-columns: 1fr; /* Single column on small devices */
   gap: 20px;
   padding: 20px;
   margin: 20px;
 }
+@media (min-width: 768px) {
+  .medicine-list {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on tablets */
+  }
+}
 
+@media (min-width: 1024px) {
+  .medicine-list {
+    grid-template-columns: repeat(3, 1fr); /* Three columns on larger screens */
+  }
+}
 .medicine-card {
   background-color: white;
   padding: 15px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: center;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
+
 .medicine-card img {
-  max-width: 100px;
-  max-height: 100px;
+  width: 50%; /* Fill the width of the card */
+  max-width: 100%; /* Ensure the image doesn't overflow */
+  height: 100%;  /* Allow image to keep its aspect ratio */
+  object-fit: contain; /* Scale image to fit within its container */
+  border-radius: 8px;
   margin-bottom: 10px;
 }
 

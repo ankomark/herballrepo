@@ -210,7 +210,7 @@ function App() {
                         <img src={medicine.image_url} alt={medicine.name} />
                         <p>{medicine.description}</p>
                         <p>
-                          <strong>Prescription:</strong> {medicine.prescription}
+                          <strong>Can be used by:</strong> {medicine.prescription}
                         </p>
                         <button onClick={() => editMedicineForm(medicine)}>Edit</button>
                         <button onClick={() => deleteMedicine(medicine.id)}>Delete</button>
