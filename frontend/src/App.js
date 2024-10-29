@@ -63,7 +63,7 @@ function App() {
 
   const fetchMedicines = async () => {
     try {
-      const response = await axios.get('/medicines');
+      const response = await axios.get('https://herballrepo-2.onrender.com/medicines');
       setMedicines(response.data);
     } catch (error) {
       console.error("Error fetching medicines", error);
@@ -73,7 +73,7 @@ function App() {
   const signup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/signup', { username, password });
+      await axios.post('https://herballrepo-2.onrender.com/signup', { username, password });
       setMessage('User created successfully');
       setShowSignUp(false);
     } catch (error) {
@@ -84,7 +84,7 @@ function App() {
   const login = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/login', { username, password });
+      await axios.post('https://herballrepo-2.onrender.com/login', { username, password });
       setMessage('Logged in successfully');
       setIsLoggedIn(true);
       setShowLogin(false);
@@ -96,11 +96,11 @@ function App() {
   const addMedicine = async (e) => {
     e.preventDefault();
     if (editMedicine) {
-      await axios.put(`/medicines/${editMedicine.id}`, newMedicine);
+      await axios.put(`https://herballrepo-2.onrender.com/medicines/${editMedicine.id}`, newMedicine);
       setMessage('Medicine updated successfully!');
       setEditMedicine(null);
     } else {
-      await axios.post('/medicines', newMedicine);
+      await axios.post('https://herballrepo-2.onrender.com/medicines', newMedicine);
       setMessage('Medicine added successfully!');
     }
     fetchMedicines();
@@ -110,7 +110,7 @@ function App() {
 
   const deleteMedicine = async (id) => {
     try {
-      await axios.delete(`/medicines/${id}`);
+      await axios.delete(`https://herballrepo-2.onrender.com/medicines/${id}`);
       setMessage('Medicine deleted successfully!');
       fetchMedicines();
     } catch (error) {
