@@ -64,7 +64,7 @@ function App() {
 
   const fetchMedicines = async () => {
     try {
-      const response = await axios.get('/medicines');
+      const response = await axios.get('https://herballrepo-2.onrender.com/medicines');
       setMedicines(response.data);
     } catch (error) {
       console.log(error);
