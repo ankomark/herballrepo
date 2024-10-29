@@ -163,7 +163,8 @@ from flask_cors import CORS
 from flask import send_from_directory
 import os
 app = Flask(__name__)
-CORS(app, supports_credentials=True)  # Enable CORS with credentials support
+CORS(app, supports_credentials=True, methods=['GET', 'POST', 'PUT', 'DELETE'])
+ # Enable CORS with credentials support
 
 # Database configuration
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://mark_qv8b_user:erXCZgxHwGZo7cLAHQvmZ0nFTFV6vlVf@dpg-csf5s6e8ii6s739c6hp0-a.oregon-postgres.render.com/mark_qv8b'
@@ -239,6 +240,32 @@ def get_medicines():
     medicines = Medicine.query.all()
     medicines_list = [{'id': m.id, 'name': m.name, 'image_url': m.image_url, 'description': m.description, 'prescription': m.prescription} for m in medicines]
     return jsonify(medicines_list), 200
+
+@app.route('/medicines/<int:id>', methods=['PUT'])
+def update_medicine(id):
+    medicine = Medicine.query.get(id)
+    if not medicine:
+        return jsonify({'error': 'Medicine not found'}), 404
+
+    data = request.get_json()
+    medicine.name = data['name']
+    medicine.image_url = data['image_url']
+    medicine.description = data['description']
+    medicine.prescription = data['prescription']
+    db.session.commit()
+
+    return jsonify({'message': 'Medicine updated successfully!'}), 200
+
+@app.route('/medicines/<int:id>', methods=['DELETE'])
+def delete_medicine(id):
+    medicine = Medicine.query.get(id)
+    if not medicine:
+        return jsonify({'error': 'Medicine not found'}), 404
+
+    db.session.delete(medicine)
+    db.session.commit()
+
+    return jsonify({'message': 'Medicine deleted successfully!'}), 200
 
 @app.route('/medicines', methods=['POST'])
 def add_medicine():

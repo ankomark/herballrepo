@@ -47,13 +47,12 @@ function Footer() {
 
 function App() {
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState(''); // Add password state
+  const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
   const [medicines, setMedicines] = useState([]);
   const [newMedicine, setNewMedicine] = useState({ name: '', image_url: '', description: '', prescription: '' });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [editMedicine, setEditMedicine] = useState(null);
-
   const [showSignUp, setShowSignUp] = useState(false);
   const [showLogin, setShowLogin] = useState(false);
   const [showCreateForm, setShowCreateForm] = useState(false);
@@ -64,17 +63,17 @@ function App() {
 
   const fetchMedicines = async () => {
     try {
-      const response = await axios.get('https://herballrepo-2.onrender.com/medicines');
+      const response = await axios.get('/medicines');
       setMedicines(response.data);
     } catch (error) {
-      console.log(error);
+      console.error("Error fetching medicines", error);
     }
   };
 
   const signup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://herballrepo-2.onrender.com/signup', { username, password });
+      await axios.post('/signup', { username, password });
       setMessage('User created successfully');
       setShowSignUp(false);
     } catch (error) {
@@ -85,7 +84,7 @@ function App() {
   const login = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('https://herballrepo-2.onrender.com/login', { username, password });
+      await axios.post('/login', { username, password });
       setMessage('Logged in successfully');
       setIsLoggedIn(true);
       setShowLogin(false);
@@ -97,11 +96,11 @@ function App() {
   const addMedicine = async (e) => {
     e.preventDefault();
     if (editMedicine) {
-      await axios.put(`https://herballrepo-2.onrender.com/medicines/${editMedicine.id}`, newMedicine);
+      await axios.put(`/medicines/${editMedicine.id}`, newMedicine);
       setMessage('Medicine updated successfully!');
       setEditMedicine(null);
     } else {
-      await axios.post('https://herballrepo-2.onrender.com/medicines', newMedicine);
+      await axios.post('/medicines', newMedicine);
       setMessage('Medicine added successfully!');
     }
     fetchMedicines();
@@ -110,9 +109,13 @@ function App() {
   };
 
   const deleteMedicine = async (id) => {
-    await axios.delete(`https://herballrepo-2.onrender.com/medicines/${id}`);
-    setMessage('Medicine deleted successfully!');
-    fetchMedicines();
+    try {
+      await axios.delete(`/medicines/${id}`);
+      setMessage('Medicine deleted successfully!');
+      fetchMedicines();
+    } catch (error) {
+      console.error("Error deleting medicine", error);
+    }
   };
 
   const editMedicineForm = (medicine) => {
@@ -174,7 +177,7 @@ function App() {
                     />
                     <input
                       type="text"
-                      name ="image_url"
+                      name="image_url"
                       placeholder="Image URL"
                       value={newMedicine.image_url}
                       onChange={(e) => setNewMedicine({ ...newMedicine, image_url: e.target.value })}
@@ -189,7 +192,7 @@ function App() {
                     ></textarea>
                     <input
                       type="text"
-                      name = "prescription"
+                      name="prescription"
                       placeholder="Prescription"
                       value={newMedicine.prescription}
                       onChange={(e) => setNewMedicine({ ...newMedicine, prescription: e.target.value })}
@@ -224,7 +227,6 @@ function App() {
                       name="username"
                       placeholder="Username"
                       value={username}
-                      
                       onChange={(e) => setUsername(e.target.value)}
                       required
                     />
@@ -246,7 +248,6 @@ function App() {
                     <input
                       type="text"
                       name="username"
-                      
                       placeholder="Username"
                       value={username}
                       onChange={(e) => setUsername(e.target.value)}
@@ -254,7 +255,7 @@ function App() {
                     />
                     <input
                       type="password"
-                      name = "password"
+                      name="password"
                       placeholder="Password"
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
