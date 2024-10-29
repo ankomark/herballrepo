@@ -74,7 +74,7 @@ function App() {
   const signup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/signup', { username, password });
+      await axios.post('https://herballrepo-2.onrender.com/signup', { username, password });
       setMessage('User created successfully');
       setShowSignUp(false);
     } catch (error) {
@@ -85,7 +85,7 @@ function App() {
   const login = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('/login', { username, password });
+      await axios.post('https://herballrepo-2.onrender.com/login', { username, password });
       setMessage('Logged in successfully');
       setIsLoggedIn(true);
       setShowLogin(false);
