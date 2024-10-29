@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  title: Herbal Remedies API
+  description: API for managing users, medicines, and cart functionalities.
+  version: 1.0.0
+
+paths:
+  /signup:
+    post:
+      summary: Register a new user
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - password
+      responses:
+        '201':
+          description: User created successfully
+        '400':
+          description: Missing username or password
+
+  /login:
+    post:
+      summary: Log in a user
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                password:
+                  type: string
+              required:
+                - username
+                - password
+      responses:
+        '200':
+          description: Logged in successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  message:
+                    type: string
+                  user:
+                    type: string
+        '400':
+          description: Missing username or password
+        '401':
+          description: Invalid username or password
+
+  /medicines:
+    get:
+      summary: Get a list of all medicines
+      tags:
+        - Medicines
+      responses:
+        '200':
+          description: A list of medicines
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    image_url:
+                      type: string
+                    description:
+                      type: string
+                    prescription:
+                      type: string
+
+    post:
+      summary: Add a new medicine
+      tags:
+        - Medicines
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                image_url:
+                  type: string
+                description:
+                  type: string
+                prescription:
+                  type: string
+              required:
+                - name
+                - image_url
+                - description
+                - prescription
+      responses:
+        '201':
+          description: Medicine added successfully

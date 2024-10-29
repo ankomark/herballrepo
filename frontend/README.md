@@ -68,3 +68,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+### swagger documentation
+
+Copy the code in swagger.yaml in the root directory
+Open https://editor-next.swagger.io/ in your browser
+Paste the code in the online editor 
+Test the APIs

@@ -161,8 +161,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_bcrypt import Bcrypt
 from flask_cors import CORS
 from flask import send_from_directory
+from flasgger import Swagger, swag_from
 
 app = Flask(__name__)
+swagger = Swagger(app)
 CORS(app, supports_credentials=True)  # Enable CORS with credentials support
 
 # Database configuration
