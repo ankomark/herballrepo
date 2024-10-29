@@ -64,7 +64,7 @@ function App() {
 
   const fetchMedicines = async () => {
     try {
-      const response = await axios.get('/mediciness');
+      const response = await axios.get('/medicines');
       setMedicines(response.data);
     } catch (error) {
       console.log(error);
