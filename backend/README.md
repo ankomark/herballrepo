@@ -1,93 +1,66 @@
-User Authentication App with Flask
-This is a simple user authentication application built with Flask, SQLAlchemy, and Flask-Bcrypt. It provides basic features such as user registration, login, and logout. This README will guide you through setting up the app, testing it, and integrating it with your main project.
+Herbal Remedy System Backend
+## Overview
+The Herbal Remedy System Backend is built using Flask and serves as the API for managing herbal medicine information, user authentication, and shopping cart functionalities. This backend connects to a PostgreSQL database and provides endpoints for users to interact with the system.
 
-Table of Contents
-Prerequisites
-Installation
-Setting Up the Application
-Running the Application
-API Endpoints
-Testing the Application
-Integrating with Your Main Project
-License
-Prerequisites
-Before you begin, ensure you have the following installed:
+## Features
+User Authentication: Secure signup, login, and logout functionalities.
+CRUD Operations: Create, read, update, and delete operations for herbal medicines.
+Cart Management: Add and view medicines in a user's cart.
+CORS Support: Cross-Origin Resource Sharing is enabled to allow requests from different origins.
 
-Python 3.6 or later
+## Technologies Used
+Flask: Python web framework for building the API.
+Flask-SQLAlchemy: ORM for database management.
+Flask-Migrate: Database migration tool.
+Flask-Bcrypt: Password hashing for secure user authentication.
+PostgreSQL: Database for storing user and medicine information.
+CORS: Middleware for handling cross-origin requests.
+
+## Live Demo
+You can view the live system here: https://herballrepo-3.onrender.com
+
+Getting Started
+
+## Prerequisites
+Python 3.7 or higher
+PostgreSQL
 pip (Python package installer)
-A code editor (e.g., VSCode, PyCharm)
-Installation
+
+## Installation
 Clone the repository:
+git clone https://github.com/yourusername/herbalremedybackend.git
+cd herbalremedybackend
 
-bash
-Copy code
-git clone https://github.com/yourusername/react-flask-auth.git
-cd react-flask-auth/backend
 Create a virtual environment:
-
-bash
-Copy code
 python -m venv venv
-Activate the virtual environment:
+source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 
-For macOS/Linux:
-bash
-Copy code
-source venv/bin/activate
-For Windows:
-bash
-Copy code
-venv\Scripts\activate
-Install the required packages:
+Install the dependencies:
+pip install -r requirements.txt
 
-bash
-Copy code
-pip install Flask Flask-SQLAlchemy Flask-Migrate Flask-Bcrypt Flask-Cors
-Initialize the database:
+Set up the database:
+Update the database URI in app.py with your PostgreSQL credentials.
 
-bash
-Copy code
+Run the migrations:
 flask db init
-flask db migrate -m "Initial migration."
+flask db migrate
 flask db upgrade
-Setting Up the Application
-Configure the application:
 
-Edit the app.py file and ensure the database URI and secret key are set according to your requirements.
-
-Create a database:
-
-This can be done automatically when you run the migration commands above.
-
-Running the Application
-Start the Flask application:
-
-bash
-Copy code
+Start the server:
 flask run
-The application will be running at http://127.0.0.1:5000/.
+Open your browser or API client (like Postman) and navigate to http://localhost:5000 to interact with the API.
 
-API Endpoints
-The following endpoints are available for user authentication:
+## API Endpoints
+Authentication
+POST /signup: Create a new user.
+POST /login: Authenticate a user and start a session.
+POST /logout: End the user session.
 
-POST /register: Register a new user.
-Body: { "username": "your_username", "password": "your_password" }
-POST /login: Log in a user.
-Body: { "username": "your_username", "password": "your_password" }
-GET /logout: Log out the current user.
-Example Request with cURL
-bash
-Copy code
-curl -X POST http://127.0.0.1:5000/register -H "Content-Type: application/json" -d '{"username": "testuser", "password": "testpass"}'
-Testing the Application
-You can test the API using tools like Postman or cURL. Ensure that the Flask server is running before making any requests.
+Medicines
+GET /medicines: Retrieve a list of all medicines.
+POST /medicines: Add a new medicine.
+PUT /medicines/int:id: Update an existing medicine by ID.
+DELETE /medicines/int:id: Delete a medicine by ID.
 
-Register a new user.
-Log in with the registered user.
-Log out.
-Integrating with Your Main Project
-To integrate this authentication app into your main project:
-
-Import the User model and any relevant functions from this app into your main project.
-Use the API endpoints in your main application to manage user authentication.
-Ensure your main project can communicate with this Flask app, either by running them on the same server or handling cross-origin requests if they are on different domains.
+Contributing
+Contributions are welcome! Feel free to submit a pull request or report any issues.
